@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper & Scissors Game</title>
+    <meta name="description" content="Play Rock Paper Scissors against the computer. Pick your move, beat the house and keep your score.">
+    <meta name="theme-color" content="#C8792C">
+    <link rel="icon" type="image/webp" href="./favicon.webp">
+
+    <!-- Headline font: loaded without blocking the page, and only the letters/digits we use -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" media="print" onload="this.media='all'"
+          href="https://fonts.googleapis.com/css2?family=Bungee&display=swap&text=RockPaperScissorsRules0123456789">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&display=swap&text=RockPaperScissorsRules0123456789">
+    </noscript>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <!-- Intro animation: Rock, Paper, Scissors... (click or press any key to skip) -->
+    <div class="splash" id="splash" aria-hidden="true">
+        <div class="token rock splash-hand" id="splash-hand">
+            <span class="inner"><img id="splash-img" src="./rock.webp" alt="" width="360" height="360" decoding="async" draggable="false" /></span>
+        </div>
+        <p class="splash-word" id="splash-word">Rock</p>
+    </div>
+
+    <header>
+        <h1><span>Rock</span> <span>Paper</span> <span>Scissors</span></h1>
+    </header>
+
+    <main>
+        <div class="score-board" role="group" aria-label="Scoreboard">
+            <div class="score">
+                <p class="num" id="user-score">0</p>
+                <p class="label">You</p>
+            </div>
+            <div class="score">
+                <p class="num" id="computer-score">0</p>
+                <p class="label">Comp</p>
+            </div>
+        </div>
+
+        <section class="choices" id="choose-screen" aria-label="Choose your move">
+            <svg class="triangle" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                <polygon points="0,0 100,0 50,100" />
+            </svg>
+
+            <!-- hand icons are small WebP files next to this file -->
+            <button class="token choice paper" id="paper" aria-label="Paper">
+                <span class="inner"><img src="./paper.webp" alt="" width="360" height="360" fetchpriority="high" decoding="async" draggable="false" /></span>
+            </button>
+            <button class="token choice scissors" id="scissors" aria-label="Scissors">
+                <span class="inner"><img src="./scissors.webp" alt="" width="360" height="360" fetchpriority="high" decoding="async" draggable="false" /></span>
+            </button>
+            <button class="token choice rock" id="rock" aria-label="Rock">
+                <span class="inner"><img src="./rock.webp" alt="" width="360" height="360" fetchpriority="high" decoding="async" draggable="false" /></span>
+            </button>
+        </section>
+
+        <section class="result" id="result-screen" aria-label="Round result" hidden>
+            <div class="side">
+                <h2>You picked</h2>
+                <div class="slot" id="player-slot"></div>
+            </div>
+
+            <div class="outcome" id="outcome">
+                <button id="play-again" type="button">Play Again</button>
+            </div>
+
+            <div class="side">
+                <h2>The house picked</h2>
+                <div class="slot" id="house-slot"></div>
+            </div>
+        </section>
+
+        <div class="msg-container">
+            <p id="msg" aria-live="polite">Play your move!</p>
+        </div>
+    </main>
+
+    <button class="rules-btn" id="open-rules" type="button">Rules</button>
+
+    <dialog id="rules-modal" aria-labelledby="rules-title">
+        <div class="modal-head">
+            <h2 id="rules-title">Rules</h2>
+            <button class="close" id="close-rules" type="button" aria-label="Close rules">
+                <svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true">
+                    <path d="M3 3l14 14M17 3L3 17" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none"/>
+                </svg>
+            </button>
+        </div>
+        <ul class="rules-list">
+            <li>Rock beats Scissors</li>
+            <li>Scissors beats Paper</li>
+            <li>Paper beats Rock</li>
+        </ul>
+        <p class="rules-tip">Same pick on both sides is a draw. Tip: press R, P or S to play.</p>
+    </dialog>
+
+    <script src="app.js"></script>
+</body>
+</html>
